@@ -80,7 +80,7 @@ print("Experimental Data 1...")
 data = pd.Series(['l','u','c','i','a','n'], index = [1, 3, 5, 7, 9, 11])
 
 # Indexing uses the explicit Index (the one we typed
-print(data[3])
+print(data[3]) 
 
 # Slicing (getting multiple values) uses IMPLICIT index (the excpected index: 0,1,2,3,4,....)
 print(data[3:5])
