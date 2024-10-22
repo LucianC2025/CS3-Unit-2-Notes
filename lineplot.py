@@ -28,5 +28,13 @@ ax = plt.axes() # NOTE: axes is a bounding box with ticks, grids, and labels
 
 # Plot a funciton on the Axes object instance
 ax.plot(x_vals, 2*(x_vals), color = 'pink')
-ax.plot(x_vals, np.tan(x_vals), color = 'dodgerblue')
+ax.plot(x_vals, 3*(x_vals), color ='#91EF9F', linestyle='dashed')
+ax.plot(x_vals, 4*(x_vals), color = '#7678ed', linestyle='dashdot')
+ax.plot(x_vals, 5*(x_vals), color ='#e63946', linestyle='dotted')
+ax.plot(x_vals, np.tan(x_vals), color = '#e9ff70')
+
+# You can use shortcut to define color & style
+ax.plot(x_vals, 1.5*(x_vals), '-m')
+
 fig.savefig('lineplot2.png')
+
