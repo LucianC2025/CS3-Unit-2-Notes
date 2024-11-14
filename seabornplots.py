@@ -6,7 +6,7 @@ import pandas as pd
 # NOTE: if something is depracated it means that in a new version it's been updated, so there is a new way to say something
 # NOTE: Data Structures: Data Frames & Series
 
-sns.set_theme(style='ticks', palette='bright') # seaborn's method to set its chart style
+sns.set_theme(style='ticks', palette='pastel') # seaborn's method to set its chart style
 # style: darkgrid, whitegrid, dark, white, ticks
 # palette: deep, muted, bright, pastel, dark, colorblind
 
@@ -38,4 +38,30 @@ print(iris.head())
 # when its a variable against another variable it generates a scatter plot
 sns.pairplot(iris, hue='species', height = 2.5)
 plt.savefig('sns-pairplot.png', bbox_inches='tight')
+plt.close()
+
+# Load another built-in data set
+tips = sns.load_dataset('tips')
+print(tips.head())
+# Create a new column in the tip data frame called 'tip_percent'
+tips['tip_percent'] = 100 * tips['tip'] / tips['total_bill']
+
+# FACET GRID: compare multiple dimensions
+grid = sns.FacetGrid(tips, row='sex', col ='time', margin_titles=True)
+grid.map(plt.hist, 'tip_percent', bins=np.linspace(0,40,15))
+plt.savefig('sns-facetgrid.png', bbox_inches='tight')
+plt.close()
+# Note on graphs: there are more male employees then female employeees based of the graphs - this is based on the HEIGHT: HEIGHT = NUM OF EMPLOYEES 
+
+
+# CATEGORICAL PLOT: look at the distribution of parameters with bins defined by another parameter
+# can also set the KIND to ‘bar’ if you want to show totals rather than distribution - kind=’bar’
+sns.catplot(x='day', y='total_bill', hue='sex', data=tips, kind='box', palette=["m", "g"])
+plt.savefig('sns-catplot.png', bbox_inches='tight')
+plt.close()
+# NOTE: 50% of the data is in the box, 50% is in the lines. 
+
+# JOIN PLOT:
+sns.jointplot(x='total_bill', y='tip', data=tips, kind='hex')
+plt.savefig('sns-joitnplot.png')
 plt.close()
